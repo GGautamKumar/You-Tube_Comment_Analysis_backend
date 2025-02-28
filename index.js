@@ -15,10 +15,10 @@ const router=require('./Routes/user.js')
 const app=express();
 app.use(bodyParser.json());
 app.use(cors({
-    "origin": process.env.ORIGIN,
-    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-    "preflightContinue": false,
-    "optionsSuccessStatus": 204
+ origin: process.env.ORIGIN || "*", // Allows all origins if ORIGIN is not set
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"], // Array format is preferred
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
   }));
 
 app.get('/',(req,res)=>{
