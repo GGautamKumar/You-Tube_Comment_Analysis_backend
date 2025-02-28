@@ -12,13 +12,12 @@ const router=require('./Routes/user.js')
 
 const app=express();
 app.use(bodyParser.json());
-app.use(cors());
 
-app.get('/',(req,res)=>{
+app.get('/',cors(),(req,res)=>{
     res.send("Welcome here");
 })
 
-app.use('/api',router);
+app.use('/api',cors(),router);
 
 
 const PORT=process.env.PORT;
