@@ -14,7 +14,12 @@ const router=require('./Routes/user.js')
 
 const app=express();
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+    "origin": process.env.ORIGIN,
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "preflightContinue": false,
+    "optionsSuccessStatus": 204
+  }));
 
 app.get('/',(req,res)=>{
     res.send("Welcome here");
