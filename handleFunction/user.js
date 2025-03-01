@@ -68,7 +68,7 @@ const getVideoComments = async (VIDEO_ID) => {
     part: "snippet",
     videoId: VIDEO_ID,
     key: API_KEY,
-    maxResults: 100, // Fetch 100 per request
+    maxResults: 10, // Fetch 100 per request
   };
 
   try {
@@ -144,7 +144,6 @@ const getCommentMonth = async (videoId) => {
     console.log(error);
   }
 };*/
-const axios = require("axios");
 
 const getVideoComments = async (VIDEO_ID) => {
   let comments = [];
