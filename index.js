@@ -13,13 +13,29 @@ const router=require('./Routes/user.js')
 const app=express();
 app.use(bodyParser.json());
 
-app.use(cors(
+/*app.use(cors(
     {
         origin:['https://youtube-comment-analysis-frontend.vercel.app'],
         credentials:true,
         methods:['PUT','POST','GET','DELETE'],
     }
 ));
+*/
+app.use(
+  cors({
+    origin: true,
+    optionsSuccessStatus: 200,
+    credentials: true,
+  })
+);
+app.options(
+  '*',
+  cors({
+    origin: true,
+    optionsSuccessStatus: 200,
+    credentials: true,
+  })
+);
 
 
 app.get('/',(req,res)=>{
