@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 
 app.use(cors(
     {
-        origin:['*'],
+        origin:['https://youtube-comment-analysis-frontend.vercel.app'],
         credentials:true,
         methods:['PUT','POST','GET','DELETE'],
     }
