@@ -28,7 +28,7 @@ const getVideoTitle = async (videoId) => {
 };
 
 const URL = "https://www.googleapis.com/youtube/v3/commentThreads";
-
+/*
 const getVideoComments = async (VIDEO_ID) => {
   let comments = [];
   let nextPageToken = "";
@@ -58,6 +58,40 @@ const getVideoComments = async (VIDEO_ID) => {
     return comments;
   } catch (error) {
     console.error("Error fetching comments:", error.message);
+  }
+};
+*/
+const getVideoComments = async (VIDEO_ID) => {
+  let comments = [];
+  let nextPageToken = "";
+  let params = {
+    part: "snippet",
+    videoId: VIDEO_ID,
+    key: API_KEY,
+    maxResults: 100, // Fetch 100 per request
+  };
+
+  try {
+    for (let i = 0; i < 2; i++) { // Limit to 2 API requests (200 comments max)
+      if (nextPageToken) params.pageToken = nextPageToken;
+
+      const response = await axios.get(URL, { params });
+      const items = response.data.items || [];
+
+      items.forEach((item) => {
+        const comment = item.snippet.topLevelComment.snippet.textDisplay;
+        comments.push(comment);
+      });
+
+      nextPageToken = response.data.nextPageToken;
+      if (!nextPageToken) break; // Stop if no more pages
+    }
+
+    console.log(`Fetched ${comments.length} comments`);
+    return comments;
+  } catch (error) {
+    console.error("Error fetching comments:", error.message);
+    return []; // Return an empty array on failure
   }
 };
 
