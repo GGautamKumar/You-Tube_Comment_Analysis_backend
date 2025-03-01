@@ -14,7 +14,7 @@ const app=express();
 app.use(bodyParser.json());
 
 app.options("*", cors(
-    Access-Control-Allow-Origin:"*"
+    origin:"*"
 ));
 
 
