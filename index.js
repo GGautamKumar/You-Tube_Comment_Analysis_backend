@@ -15,10 +15,9 @@ app.use(bodyParser.json());
 
 app.use(cors(
     {
-        origin:'*',
+        origin:['*'],
         credentials:true,
         methods:['PUT','POST','GET','DELETE'],
-        maxAge:3600
     }
 ));
 
