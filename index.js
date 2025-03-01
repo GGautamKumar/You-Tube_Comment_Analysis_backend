@@ -13,10 +13,11 @@ const router=require('./Routes/user.js')
 const app=express();
 app.use(bodyParser.json());
 
-app.use(cors(
-    AccessControlAllowOrigin: `*`
+app.options("*", cors(
+    Access-Control-Allow-Origin:"*"
 ));
-app.options("*", cors());
+
+
 
 /*app.use(cors(
     {
