@@ -13,7 +13,9 @@ const router=require('./Routes/user.js')
 const app=express();
 app.use(bodyParser.json());
 
-app.use(cors());
+app.use(cors(
+    AccessControlAllowOrigin: `*`
+));
 app.options("*", cors());
 
 /*app.use(cors(
