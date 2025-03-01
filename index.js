@@ -14,12 +14,8 @@ const app=express();
 app.use(bodyParser.json());
 app.use(express.json());
 
-app.options("*", cors(
-    {
-        origin:"*",
-        credentials:true,
-    }
-));
+app.use(cors());
+//app.options("*", cors());
 
 
 
