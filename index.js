@@ -12,6 +12,7 @@ const router=require('./Routes/user.js')
 
 const app=express();
 app.use(bodyParser.json());
+app.use(express.json());
 
 app.options("*", cors(
     {
