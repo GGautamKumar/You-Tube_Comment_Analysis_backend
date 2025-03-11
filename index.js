@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 app.use(cors({
-   origin:["https://car-rental-frontend-olive.vercel.app"],
+   origin:["https://youtube-comment-analysis-frontend.vercel.app"],
    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
 }))
