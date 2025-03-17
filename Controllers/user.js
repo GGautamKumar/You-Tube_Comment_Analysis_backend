@@ -21,10 +21,10 @@ const Add = async (req, res) => {
     await User.findByIdAndDelete(_id);
   }
   let comments;
-   //comments = await getVideoComments(videoId);
+   comments = await getVideoComments(videoId);
   const videoTitle = await getVideoTitle(videoId);
   let commentMonth;
- // commentMonth = await getCommentMonth(videoId);
+ commentMonth = await getCommentMonth(videoId);
 
   console.log(`Comments for Video ID: ${videoId}`);
 
@@ -32,7 +32,7 @@ const Add = async (req, res) => {
   await Promise.all(comments.map(async (comment) => {
     try {
       let result;
-      //result = await aiResult(comment, videoId);
+      result = await aiResult(comment, videoId);
      
 
       if (result.includes("Agree")) {
@@ -49,7 +49,7 @@ const Add = async (req, res) => {
   }));
 
   let keywords;
-  //keywords = await aiResultComment(comments);
+  keywords = await aiResultComment(comments);
 
   const user = new User({
     videoId,
